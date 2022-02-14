@@ -1,0 +1,157 @@
+<head>
+    <!-- Load plotly.js into the DOM -->
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+</head>
+
+<body>
+<div id='myDiv'><!-- Plotly chart will be drawn inside this DIV -->
+</div>
+
+<script type="text/javascript">
+    function sendToJava (data) {
+        javaConnector.method(data[0].toString())
+    };
+
+    var jsConnector = {
+        showResult: function (result) {
+            document.getElementById('result').innerHTML = result;
+        }
+    };
+
+    function getJsConnector() {
+        return jsConnector;
+    };
+    function drawChart(iDegrees,iLengths) {
+        var data = [
+            {
+                type: "scatterpolar",
+                mode: "lines+markers",
+                r: [iLengths[0],iLengths[1],iLengths[2],iLengths[3],iLengths[4],iLengths[5],iLengths[6],iLengths[7],iLengths[8],iLengths[9],iLengths[0]],
+                theta: [iDegrees[0],iDegrees[1],iDegrees[2],iDegrees[3],iDegrees[4],iDegrees[5],iDegrees[6],iDegrees[7],iDegrees[8],iDegrees[9],iDegrees[0]],
+                line: {
+                    color: "red"
+                },
+                marker: {
+                    color: "red",
+                    symbol: "square",
+                    size: 8
+                },
+                fill: "toself",
+                subplot: "polar1"
+            }]
+
+        var layout =
+            {
+                polar1: {
+                    domain: {
+                        x: [0, 1],
+                        y: [0, 1]
+                    },
+                    radialaxis: {
+                        tickfont: {
+                            size: 15
+                        }
+                    },
+                    angularaxis: {
+                        tickfont: {
+                            size: 15
+                        }
+                    }
+                }
+            }
+
+        Plotly.newPlot('myDiv', data, layout)
+    }
+    function drawGeneralChart(iDegrees,iLengths,uDegrees,uLengths,pDegrees,pLengths,usDegrees,usLengths) {
+        var data = [
+            {
+                type: "scatterpolar",
+                name: "Industry experts diagram",
+                mode: "lines+markers",
+                r: [iLengths[0],iLengths[1],iLengths[2],iLengths[3],iLengths[4],iLengths[5],iLengths[6],iLengths[7],iLengths[8],iLengths[9],iLengths[0]],
+                theta: [iDegrees[0],iDegrees[1],iDegrees[2],iDegrees[3],iDegrees[4],iDegrees[5],iDegrees[6],iDegrees[7],iDegrees[8],iDegrees[9],iDegrees[0]],
+                line: {
+                    color: "#red"
+                },
+                marker: {
+                    color: "red",
+                    symbol: "square",
+                    size: 8
+                },
+                fill: "toself",
+                subplot: "polar1"
+            }, {
+                type: "scatterpolar",
+                name: "Usability experts diagram",
+                mode: "lines+markers",
+                r: [uLengths[0],uLengths[1],uLengths[2],uLengths[3],uLengths[4],uLengths[5],uLengths[6],uLengths[7],uLengths[8],uLengths[9],uLengths[0]],
+                theta: [uDegrees[0],uDegrees[1],uDegrees[2],uDegrees[3],uDegrees[4],uDegrees[5],uDegrees[6],uDegrees[7],uDegrees[8],uDegrees[9],uDegrees[0]],
+                line: {
+                    color: "blue"
+                },
+                marker: {
+                    color: "blue",
+                    symbol: "square",
+                    size: 8
+                },
+                fill: "toself",
+                subplot: "polar1"
+            }, {
+                type: "scatterpolar",
+                name: "Programming experts diagram",
+                mode: "lines+markers",
+                r: [pLengths[0],pLengths[1],pLengths[2],pLengths[3],pLengths[4],pLengths[5],pLengths[6],pLengths[7],pLengths[8],pLengths[9],pLengths[0]],
+                theta: [pDegrees[0],pDegrees[1],pDegrees[2],pDegrees[3],pDegrees[4],pDegrees[5],pDegrees[6],pDegrees[7],pDegrees[8],pDegrees[9],pDegrees[0]],
+                line: {
+                    color: "green"
+                },
+                marker: {
+                    color: "green",
+                    symbol: "square",
+                    size: 8
+                },
+                fill: "toself",
+                subplot: "polar1"
+            }, {
+                type: "scatterpolar",
+                name: "Users diagram",
+                mode: "lines+markers",
+                r: [usLengths[0],usLengths[1],usLengths[2],usLengths[3],usLengths[4],usLengths[5],usLengths[6],usLengths[7],usLengths[8],usLengths[9],usLengths[0]],
+                theta: [usDegrees[0],usDegrees[1],usDegrees[2],usDegrees[3],usDegrees[4],usDegrees[5],usDegrees[6],usDegrees[7],usDegrees[8],usDegrees[9],usDegrees[0]],
+                line: {
+                    color: "yellow"
+                },
+                marker: {
+                    color: "yellow",
+                    symbol: "square",
+                    size: 8
+                },
+                fill: "toself",
+                subplot: "polar1"
+            }
+        ]
+
+        var layout =
+            {
+                polar1: {
+                    domain: {
+                        x: [0, 1],
+                        y: [0, 1]
+                    },
+                    radialaxis: {
+                        tickfont: {
+                            size: 15
+                        }
+                    },
+                    angularaxis: {
+                        tickfont: {
+                            size: 15
+                        }
+                    }
+                }
+            }
+
+        Plotly.newPlot('myDiv', data, layout)
+    }
+
+</script></body>
